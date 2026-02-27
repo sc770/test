@@ -1,0 +1,23 @@
+name: vault
+services:
+  - name: backend
+    source_dir: ../backend
+    run_command: "npm start"
+    build_command: "npm install"
+    http_port: 3000
+    environment_slug: node-js
+    instance_size_slug: basic-xxs
+    instance_count: 1
+    routes:
+      - path: /api
+
+  - name: frontend
+    source_dir: ../frontend
+    run_command: "npm start"
+    build_command: "npm install && npm run build"
+    http_port: 8080
+    environment_slug: node-js
+    instance_size_slug: basic-xxs
+    instance_count: 1
+    routes:
+      - path: /
